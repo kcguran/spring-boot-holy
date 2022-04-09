@@ -1,6 +1,6 @@
 package com.kcguran.springreactedu.user;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,7 +19,7 @@ public class User {
 	@GeneratedValue
 	private long id;
 	
-	@NotNull
+	@NotNull(message = "{kcguran.constraint.username.NotNull.message}")
 	@Size(min = 4,max = 20)
 	@UniqueUsername
 	private String username;
@@ -28,6 +28,6 @@ public class User {
 	private String displayName;
 	@NotNull
 	@Size(min = 8)
-	@Pattern(regexp = "^(_=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$")
+	@Pattern(regexp = "^(_=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message = "{kcguran.constrain.password.Pattern.message}")
 	private String password;
 }
